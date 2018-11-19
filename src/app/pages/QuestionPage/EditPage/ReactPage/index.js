@@ -17,7 +17,7 @@ import AnswerWidget from 'app/components/Widgets/AnswerWidget';
 import { listQuestions, getQuestion } from 'app/utils/question';
 import debouncedRunCode from 'app/utils/runCode';
 
-import ControlWidget from '../ControlWidget';
+import ControlWidget from 'app/components/Widgets/ControlWidget/Edit';
 import TagWidget from '../../TagWidget';
 import styles from './ReactPage.module.scss';
 

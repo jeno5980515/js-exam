@@ -20,7 +20,7 @@ import debouncedRunCode from 'app/utils/runCode';
 
 import { listQuestions, getQuestion } from 'app/utils/question';
 
-import ControlWidget from '../ControlWidget';
+import ControlWidget from 'app/components/Widgets/ControlWidget/Edit';
 import TagWidget from '../../TagWidget';
 import styles from './JavaScriptPage.module.scss';
 
