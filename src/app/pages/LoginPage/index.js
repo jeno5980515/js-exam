@@ -3,7 +3,8 @@ import { Input, Button } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { submitPassword } from 'app/actions/login';
+import { submitPassword, logout } from 'app/actions/login';
+import { setAccurateTimeout } from '../../utils/timer'
 import styles from './LoginPage.module.scss';
 
 class LoginPage extends React.Component {
@@ -24,6 +25,9 @@ class LoginPage extends React.Component {
     const { actions } = this.props;
     e.preventDefault();
     actions.submitPassword(password);
+    setAccurateTimeout(() => {
+      actions.logout();
+    }, 1000 * 60 * 60);
   }
 
   render() {
@@ -55,7 +59,8 @@ export default withRouter(connect(
   (dispatch) => {
     return {
       actions: {
-        submitPassword: password => dispatch(submitPassword(password))
+        submitPassword: password => dispatch(submitPassword(password)),
+        logout: () => dispatch(logout())
       }
     };
   }
