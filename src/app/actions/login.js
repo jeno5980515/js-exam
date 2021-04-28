@@ -4,3 +4,9 @@ export function submitPassword(password) {
     password
   };
 }
+
+export function logout() {
+  return {
+    type: 'LOGIN/LOGOUT'
+  }
+}

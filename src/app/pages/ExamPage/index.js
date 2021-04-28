@@ -43,11 +43,15 @@ class Page extends Component {
 
   componentDidUpdate(prevProps) {
     const { state: previousState } = prevProps;
-    const { state } = this.props;
+    const { state, history } = this.props;
     const { categoryIndex: previousCategoryIndex } = getStateInformation(previousState);
     const { categoryIndex, code } = getStateInformation(state);
     if (previousCategoryIndex !== categoryIndex) {
       this.handleCodeChange(code);
+    }
+    if (!state.login.isLogin) {
+      history.push('/login');
+      return;
     }
   }
 

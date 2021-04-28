@@ -7,15 +7,15 @@ import spy from './spy';
 import getPatchedTape from './tape';
 
 const wrapCode = (code = '') => {
-  return code.replace(/for *\(.*\{|while *\(.*\{|do *\{/g, (loopHead) => {
-    return `let count = 0;
-      const detector = (c) => {
+  return code.replace(/for *\(.*\{|while *\(.*\{|do *\{/g, (loopHead, i) => {
+    return `let infcount${i} = 0;
+      const detector${i} = (c) => {
         if (c > 100000) {
           throw new Error('infinite');
         }
       }
       ${loopHead}
-      detector(count++);
+      detector${i}(infcount${i}++);
     `;
   });
 };
